@@ -1084,7 +1084,7 @@
             <p style="font-size:12px; color:#8578aa; margin-top:10px;">Kliknij w zdjęcie, aby powiększyć na cały ekran.</p>
         </section>
 
-        <!-- Sprzęt (Nienaruszona specyfikacja) -->
+        <!-- Sprzęt (Pełna Specyfikacja) -->
         <section id="sprzet">
             <h2>💻 Sprzęt</h2>
             <div class="grid-box">
@@ -1205,10 +1205,10 @@
             </div>
         </section>
 
-        <!-- Księga Gości NA SAMYM KOŃCU -->
+        <!-- Księga Gości NA SAMYM KOŃCU (Synchronizowana przez JSONBin.io) -->
         <section id="ksiega" style="margin-bottom: 10px;">
             <h2>📖 Księga Gości</h2>
-            <p style="font-size:13px; color:#b5a9d6; margin-bottom:12px;">Zostaw swój ślad na stronie! Wpisy i dane są automatycznie zapisywane w pliku <code>dane.json</code>.</p>
+            <p style="font-size:13px; color:#b5a9d6; margin-bottom:12px;">Zostaw swój ślad na stronie! Wpisy i polubienia aktualizują się automatycznie.</p>
             <div class="expand-card static-card">
                 <div class="guestbook-form">
                     <input type="text" id="gb-name" class="guestbook-input" placeholder="Twój nick / Discord (np. Janek#1234)">
@@ -1236,12 +1236,14 @@
 
     <script>
         /* =========================================================
-           1. ŁADOWANIE I ZAPIS DANYCH (dane.json + save.php)
+           1. KONFIGURACJA JSONBIN.IO (CHMURA DLA GITHUB PAGES)
            ========================================================= */
+        const BIN_ID = '6af99573ac6210605a89378a';
+        const MASTER_KEY = '$2a$10$TyFaFvUUDJ0W0bQBb6JaheAGihkb2aEqWlqGEq28DxcdkObs3j5uK';
+
         let siteData = {
             visits: 1,
             likes: 48,
-            userLiked: false,
             guestbook: []
         };
 
@@ -1252,16 +1254,24 @@
                 splash.style.display = 'none';
             }, 600);
 
-            // Odczyt z pliku dane.json na serwerze
-            fetch('dane.json')
-                .then(res => res.json())
-                .then(data => {
-                    siteData = data;
-                    initStorageAndState();
-                })
-                .catch(() => {
-                    initStorageAndState();
-                });
+            // Pobieranie aktualnego stanu strony z chmury JSONBin.io
+            fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+                headers: {
+                    'X-Master-Key': MASTER_KEY
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.record) {
+                    siteData.visits = typeof data.record.visits === 'number' ? data.record.visits : 1;
+                    siteData.likes = typeof data.record.likes === 'number' ? data.record.likes : 48;
+                    siteData.guestbook = Array.isArray(data.record.guestbook) ? data.record.guestbook : [];
+                }
+                initStorageAndState();
+            })
+            .catch(() => {
+                initStorageAndState();
+            });
 
             fetchMinecraftStatus();
             setInterval(fetchMinecraftStatus, 30000);
@@ -1269,10 +1279,11 @@
         });
 
         function saveToServer() {
-            fetch('save.php', {
-                method: 'POST',
+            fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+                method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': MASTER_KEY
                 },
                 body: JSON.stringify(siteData)
             }).catch(() => {});
@@ -1415,17 +1426,18 @@
         }
 
         /* =========================================================
-           7. SYSTEM POLUBIEŃ
+           7. SYSTEM POLUBIEŃ (TYLKO RAZ NA UŻYTKOWNIKA)
            ========================================================= */
         function likePage() {
             playSoftClick();
-            if (siteData.userLiked) {
+            const alreadyLiked = localStorage.getItem('arrel_user_liked_page') === 'true';
+            if (alreadyLiked) {
                 showToast('Już polubiłeś tę stronę! ❤️');
                 return;
             }
 
             siteData.likes += 1;
-            siteData.userLiked = true;
+            localStorage.setItem('arrel_user_liked_page', 'true');
 
             updateLikeUI();
             saveToServer();
@@ -1433,6 +1445,7 @@
         }
 
         function updateLikeUI() {
+            const alreadyLiked = localStorage.getItem('arrel_user_liked_page') === 'true';
             const btn = document.getElementById('like-page-btn');
             const countSpan = document.getElementById('like-count');
             const footerCountSpan = document.getElementById('footer-like-count');
@@ -1441,7 +1454,7 @@
             if (countSpan) countSpan.innerText = siteData.likes;
             if (footerCountSpan) footerCountSpan.innerText = siteData.likes;
 
-            if (siteData.userLiked && btn) {
+            if (alreadyLiked && btn) {
                 btn.classList.add('liked');
                 btn.disabled = true;
                 if (labelSpan) labelSpan.innerText = 'Polubiono';
