@@ -30,30 +30,107 @@
             position: relative;
         }
 
-        /* Splash Screen / Loader */
+        /* =========================================================
+           SPLASH SCREEN / EKRAN ŁADOWANIA
+           ========================================================= */
         #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #040208; z-index: 9999; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; transition: opacity 0.6s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #040208;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease;
         }
-        .loader-logo { font-size: 32px; font-weight: 800; color: #fff; text-shadow: 0 0 20px #00d4ff; margin-bottom: 15px; }
-        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid #00d4ff; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        .loader-logo {
+            font-size: 34px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #c0a8ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .spinner {
+            width: 52px;
+            height: 52px;
+            border: 4px solid rgba(255, 255, 255, 0.08);
+            border-top: 4px solid #00d4ff;
+            border-right: 4px solid #b900b4;
+            border-radius: 50%;
+            animation: spin 0.95s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* =========================================================
+           TŁO: CZĄSTECZKI & PŁYNNE NEONY
+           ========================================================= */
         #particles-canvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            pointer-events: none;
         }
 
         .liquid-bg {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3; overflow: hidden; background: #040208;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -3;
+            overflow: hidden;
+            background: #040208;
         }
 
         .blob {
-            position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.45; animation: floatBlob 16s infinite alternate ease-in-out;
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(125px);
+            opacity: 0.45;
+            animation: floatBlob 16s infinite alternate ease-in-out;
         }
-        .blob-1 { top: -15%; left: -15%; width: 650px; height: 650px; background: #6a0dad; }
-        .blob-2 { bottom: -20%; right: -15%; width: 700px; height: 700px; background: #00d4ff; animation-delay: -5s; }
-        .blob-3 { top: 40%; left: 30%; width: 550px; height: 550px; background: #b900b4; animation-delay: -10s; }
+
+        .blob-1 {
+            top: -15%;
+            left: -15%;
+            width: 650px;
+            height: 650px;
+            background: #6a0dad;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: #00d4ff;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 30%;
+            width: 550px;
+            height: 550px;
+            background: #b900b4;
+            animation-delay: -10s;
+        }
 
         @keyframes floatBlob {
             0% { transform: translate(0, 0) scale(1); }
@@ -61,13 +138,16 @@
             100% { transform: translate(-50px, -40px) scale(0.95); }
         }
 
+        /* =========================================================
+           GŁÓWNY KONTENER SZKLANY (GLASSMORPHISM)
+           ========================================================= */
         .container {
-            background: rgba(18, 14, 33, 0.65);
+            background: rgba(18, 14, 33, 0.68);
             backdrop-filter: blur(30px) saturate(190%);
             -webkit-backdrop-filter: blur(30px) saturate(190%);
             padding: 45px 35px;
             border-radius: 36px;
-            max-width: 980px;
+            max-width: 1020px;
             width: 100%;
             border: 1px solid rgba(255, 255, 255, 0.14);
             position: relative;
@@ -75,145 +155,674 @@
         }
 
         @keyframes neonBorder {
-            0% { box-shadow: 0 0 20px rgba(106, 13, 173, 0.4), 0 0 40px rgba(0, 212, 255, 0.2); }
-            100% { box-shadow: 0 0 35px rgba(0, 212, 255, 0.5), 0 0 60px rgba(185, 0, 180, 0.3); }
+            0% { box-shadow: 0 0 22px rgba(106, 13, 173, 0.4), 0 0 42px rgba(0, 212, 255, 0.2); }
+            100% { box-shadow: 0 0 36px rgba(0, 212, 255, 0.5), 0 0 64px rgba(185, 0, 180, 0.3); }
         }
 
+        /* =========================================================
+           NAWIGACJA
+           ========================================================= */
         .navbar {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 18px; flex-wrap: wrap; gap: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .nav-logo { color: #ffffff; font-weight: 800; font-size: 24px; text-decoration: none; text-shadow: 0 0 14px rgba(185, 0, 180, 0.8); }
-        .nav-links { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-        .nav-links a { color: #b5a9d6; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: #00d4ff; text-shadow: 0 0 8px rgba(0, 212, 255, 0.5); }
+        .nav-logo {
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 24px;
+            text-decoration: none;
+            text-shadow: 0 0 14px rgba(185, 0, 180, 0.8);
+            letter-spacing: -0.4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #b5a9d6;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+        }
 
         .btn-toggle {
-            background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #00d4ff; padding: 6px 12px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: #00d4ff;
+            padding: 6px 12px;
+            border-radius: 9px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-family: inherit;
         }
-        .btn-toggle:hover { background: rgba(0, 212, 255, 0.2); }
 
-        .profile-header { text-align: center; margin-bottom: 35px; }
+        .btn-toggle:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.45);
+        }
+
+        .btn-toggle.active-filter {
+            background: rgba(0, 212, 255, 0.28);
+            border-color: #00d4ff;
+            color: #ffffff;
+        }
+
+        /* =========================================================
+           NAGŁÓWEK PROFILU I POLUBIENIA
+           ========================================================= */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
         .avatar-glass {
-            width: 130px; height: 130px; border-radius: 50%;
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
-            border: 2px solid rgba(255, 255, 255, 0.35); display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px auto; box-shadow: 0 0 45px rgba(185, 0, 180, 0.6); overflow: hidden; transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 45px rgba(185, 0, 180, 0.6);
+            overflow: hidden;
+            transition: 0.3s ease;
+            font-size: 42px;
+            font-weight: 800;
         }
-        .avatar-glass:hover { transform: scale(1.05); }
-        .avatar-glass img { width: 100%; height: 100%; object-fit: cover; }
+
+        .avatar-glass:hover {
+            transform: scale(1.05);
+        }
+
+        .avatar-glass img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         h1 {
-            font-size: 38px; font-weight: 800;
+            font-size: 40px;
+            font-weight: 800;
             background: linear-gradient(135deg, #ffffff, #c0a8ff, #00d4ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; min-height: 48px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            min-height: 50px;
+        }
+
+        .header-badges-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .status-badge {
-            display: inline-flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 22px;
-            border-radius: 20px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 13px; font-weight: 600; color: #d8c7ff; margin-bottom: 15px;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 22px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 13px;
+            font-weight: 600;
+            color: #d8c7ff;
         }
-        .status-main-line { display: flex; align-items: center; gap: 8px; }
-        .status-dot { width: 10px; height: 10px; background: #00ff88; border-radius: 50%; box-shadow: 0 0 10px #00ff88; }
-        .activity-details { font-size: 12px; color: #00d4ff; font-weight: 500; }
 
-        .bio-lead { font-size: 15px; color: #b5a9d6; max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .status-main-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        .activity-details {
+            font-size: 12px;
+            color: #00d4ff;
+            font-weight: 500;
+        }
+
+        .like-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background: rgba(255, 75, 130, 0.12);
+            border: 1px solid rgba(255, 75, 130, 0.45);
+            color: #ff85a8;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .like-btn:hover:not(:disabled) {
+            background: rgba(255, 75, 130, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px rgba(255, 75, 130, 0.35);
+            color: #ffffff;
+        }
+
+        .like-btn.liked,
+        .like-btn:disabled {
+            background: linear-gradient(135deg, rgba(255, 65, 125, 0.35), rgba(185, 0, 180, 0.35));
+            border-color: #ff5e94;
+            color: #ffffff;
+            cursor: default;
+            transform: none;
+        }
+
+        .bio-lead {
+            font-size: 15px;
+            color: #b5a9d6;
+            max-width: 690px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
 
         .quote-box {
-            background: rgba(255, 255, 255, 0.035); border-left: 4px solid #00d4ff; padding: 16px 22px;
-            border-radius: 14px; margin-bottom: 30px; font-style: italic; font-size: 14px; color: #d8c7ff;
+            background: rgba(255, 255, 255, 0.038);
+            border-left: 4px solid #00d4ff;
+            padding: 16px 22px;
+            border-radius: 14px;
+            margin-bottom: 32px;
+            font-style: italic;
+            font-size: 14px;
+            color: #d8c7ff;
+            line-height: 1.6;
         }
 
-        section { margin-bottom: 40px; }
+        /* =========================================================
+           SEKCJE I KARTY
+           ========================================================= */
+        section {
+            margin-bottom: 42px;
+        }
+
         h2 {
-            font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 8px; display: flex; align-items: center; gap: 10px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            padding-bottom: 9px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        p { font-size: 14px; line-height: 1.75; color: #b5a9d6; }
 
-        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+        p {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #b5a9d6;
+        }
+
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 20px;
+        }
 
         .expand-card {
-            background: rgba(255, 255, 255, 0.045); border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 24px; border-radius: 20px; backdrop-filter: blur(14px); cursor: pointer; transition: 0.35s ease; position: relative;
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 24px;
+            border-radius: 20px;
+            backdrop-filter: blur(14px);
+            cursor: pointer;
+            transition: 0.3s ease;
+            position: relative;
         }
-        .expand-card:hover { background: rgba(255, 255, 255, 0.09); border-color: rgba(0, 212, 255, 0.5); transform: translateY(-4px); }
 
-        .expand-header { display: flex; justify-content: space-between; align-items: center; }
-        .card-title-group { display: flex; align-items: center; gap: 12px; }
-        .server-icon-img { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .expand-card h3 { color: #00d4ff; font-size: 16px; font-weight: 700; }
+        .expand-card:hover {
+            background: rgba(255, 255, 255, 0.085);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .expand-card.static-card {
+            cursor: default;
+        }
+
+        .expand-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .server-icon-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            flex-shrink: 0;
+        }
+
+        .expand-card h3 {
+            color: #00d4ff;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
         .arrow-hint {
-            font-size: 12px; color: #c0a8ff; transition: 0.35s; font-weight: 600;
-            background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px;
+            font-size: 12px;
+            color: #c0a8ff;
+            transition: 0.3s;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
         }
 
-        .details-content { display: none; margin-top: 16px; border-top: 1px dashed rgba(255, 255, 255, 0.12); padding-top: 14px; }
-        .expand-card.open .details-content { display: block !important; }
+        .details-content {
+            display: none;
+            margin-top: 16px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.14);
+            padding-top: 14px;
+        }
 
-        .short-desc { font-size: 13px; color: #b5a9d6; margin-top: 8px; }
-        .device-summary { font-size: 13px; color: #d8c7ff; margin-bottom: 14px; line-height: 1.6; background: rgba(255, 255, 255, 0.035); padding: 14px; border-radius: 12px; border-left: 3px solid #00d4ff; }
-        
-        .spec-list { list-style: none; font-size: 13px; color: #e0d8f7; }
-        .spec-list li { margin-bottom: 8px; display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); padding-bottom: 6px; gap: 12px; }
-        .spec-list li span { color: #8578aa; }
-        .spec-list li strong { text-align: right; color: #ffffff; }
+        .expand-card.open .details-content {
+            display: block !important;
+        }
+
+        .short-desc {
+            font-size: 13px;
+            color: #b5a9d6;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .device-summary {
+            font-size: 13px;
+            color: #d8c7ff;
+            margin-bottom: 14px;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.035);
+            padding: 14px;
+            border-radius: 12px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .spec-list {
+            list-style: none;
+            font-size: 13px;
+            color: #e0d8f7;
+        }
+
+        .spec-list li {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-bottom: 6px;
+            gap: 12px;
+        }
+
+        .spec-list li span {
+            color: #8578aa;
+        }
+
+        .spec-list li strong {
+            text-align: right;
+            color: #ffffff;
+        }
 
         .archive-badge {
-            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12);
-            padding: 4px 10px; border-radius: 20px; font-size: 11px; color: #b5a9d6; font-weight: 650;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #b5a9d6;
+            font-weight: 650;
+            white-space: nowrap;
         }
 
+        /* Status Serwera MC na żywo */
+        .mc-status-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-top: 10px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .mc-pill-online {
+            color: #00ff88;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mc-pill-offline {
+            color: #ff6b6b;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* =========================================================
+           PRZYCISKI AKCJI
+           ========================================================= */
         .btn-action {
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 12px;
-            padding: 10px 16px; border-radius: 12px; text-decoration: none; font-size: 13px; font-weight: 700;
-            border: 1px solid rgba(255, 255, 255, 0.2); cursor: pointer; transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            margin-top: 12px;
+            padding: 11px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-family: inherit;
         }
-        .btn-steam { background: linear-gradient(135deg, #171a21, #2a475e); color: #c6d4df; }
-        .btn-steam:hover { background: linear-gradient(135deg, #2a475e, #66c0f4); color: #fff; }
-        .btn-discord { background: linear-gradient(135deg, #6a0dad, #00d4ff); color: #ffffff; }
-        .btn-discord:hover { box-shadow: 0 4px 20px rgba(0, 212, 255, 0.5); transform: translateY(-2px); }
 
-        .gallery-placeholder {
-            border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 16px; padding: 30px; text-align: center;
-            background: rgba(255, 255, 255, 0.02); color: #8578aa; font-size: 14px;
+        .btn-steam {
+            background: linear-gradient(135deg, #171a21, #2a475e);
+            color: #c6d4df;
         }
 
-        /* Formularz Księgi Gości */
-        .guestbook-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+        .btn-steam:hover {
+            background: linear-gradient(135deg, #2a475e, #66c0f4);
+            color: #ffffff;
+        }
+
+        .btn-discord {
+            background: linear-gradient(135deg, #6a0dad, #00d4ff);
+            color: #ffffff;
+        }
+
+        .btn-discord:hover {
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .btn-json {
+            background: rgba(255, 255, 255, 0.08);
+            color: #d8c7ff;
+            border: 1px solid rgba(0, 212, 255, 0.35);
+            margin-top: 0;
+            width: auto;
+            padding: 8px 14px;
+            font-size: 12px;
+        }
+
+        .btn-json:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* =========================================================
+           GALERIA ZDJĘĆ (GARAŻOWA + GRY)
+           ========================================================= */
+        .gallery-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            border-color: #00d4ff;
+            box-shadow: 0 6px 24px rgba(0, 212, 255, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 165px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #e0d8f7;
+            background: rgba(12, 9, 24, 0.7);
+        }
+
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 82vh;
+            border-radius: 16px;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 0 35px rgba(0, 212, 255, 0.35);
+        }
+
+        #lightbox-caption {
+            margin-top: 14px;
+            color: #d8c7ff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           KSIĘGA GOŚCI & EXPORT JSON
+           ========================================================= */
+        .guestbook-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .json-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .guestbook-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         .guestbook-input {
-            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 10px 14px; border-radius: 10px; color: #fff; font-family: inherit; font-size: 13px; outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            padding: 11px 14px;
+            border-radius: 11px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            transition: 0.2s;
         }
-        .guestbook-input:focus { border-color: #00d4ff; }
-        .guestbook-entries { max-height: 180px; overflow-y: auto; margin-top: 15px; display: flex; flex-direction: column; gap: 8px; }
-        .guestbook-msg { background: rgba(255, 255, 255, 0.03); padding: 8px 12px; border-radius: 8px; font-size: 12px; border-left: 2px solid #00d4ff; }
 
-        .contact-box { background: rgba(255, 255, 255, 0.045); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 24px; padding: 30px; text-align: center; }
-        .contact-nick { font-size: 28px; font-weight: 800; color: #ffffff; margin: 10px 0; text-shadow: 0 0 18px rgba(0, 212, 255, 0.6); }
+        .guestbook-input:focus {
+            border-color: #00d4ff;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .guestbook-entries {
+            max-height: 240px;
+            overflow-y: auto;
+            margin-top: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-right: 4px;
+        }
+
+        .guestbook-msg {
+            background: rgba(255, 255, 255, 0.035);
+            padding: 11px 14px;
+            border-radius: 10px;
+            font-size: 13px;
+            border-left: 3px solid #00d4ff;
+            line-height: 1.5;
+        }
+
+        .guestbook-msg-meta {
+            font-size: 11px;
+            color: #8578aa;
+            margin-bottom: 3px;
+        }
+
+        /* =========================================================
+           KONTAKT, TOAST & STOPKA
+           ========================================================= */
+        .contact-box {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .contact-nick {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 10px 0;
+            text-shadow: 0 0 18px rgba(0, 212, 255, 0.6);
+        }
 
         #toast {
-            position: fixed; bottom: 25px; right: 25px; background: rgba(106, 13, 173, 0.95); border: 1px solid #00d4ff;
-            color: #ffffff; padding: 14px 24px; border-radius: 14px; font-size: 13px; font-weight: 600; display: none; z-index: 1000;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(24, 18, 48, 0.96);
+            border: 1px solid #00d4ff;
+            color: #ffffff;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 600;
+            display: none;
+            z-index: 3000;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
         }
 
-        .footer { text-align: center; margin-top: 45px; font-size: 13px; color: #796d9c; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 25px; }
+        .footer {
+            text-align: center;
+            margin-top: 45px;
+            font-size: 13px;
+            color: #796d9c;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 25px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 28px 18px;
+                border-radius: 24px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+            .spec-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
+            .spec-list li strong {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Ekran ładowania (Splash Screen) -->
     <div id="splash-screen">
-        <div class="loader-logo">arrelYT557 Hub</div>
+        <div class="loader-logo">arrelYT557</div>
         <div class="spinner"></div>
     </div>
 
+    <!-- Tło -->
     <canvas id="particles-canvas"></canvas>
-
     <div class="liquid-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -225,18 +834,18 @@
         <div class="navbar">
             <a href="#" class="nav-logo">arrelYT557</a>
             <div class="nav-links">
-                <a href="#o-mnie">O mnie</a>
-                <a href="#staz">Staż</a>
-                <a href="#archiwum">Archiwum</a>
-                <a href="#social">Social Media</a>
-                <a href="#gry">Gry & Mody</a>
-                <a href="#administracja">Serwery</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#sprzet">Specyfikacja</a>
-                <a href="#ksiega">Księga</a>
-                <a href="#kontakt">Kontakt</a>
+                <a href="#o-mnie" data-lang-pl="O mnie" data-lang-en="About me">O mnie</a>
+                <a href="#staz" data-lang-pl="Staż" data-lang-en="Experience">Staż</a>
+                <a href="#archiwum" data-lang-pl="Archiwum" data-lang-en="Archive">Archiwum</a>
+                <a href="#social" data-lang-pl="Social Media" data-lang-en="Social Media">Social Media</a>
+                <a href="#gry" data-lang-pl="Gry & Mody" data-lang-en="Games & Mods">Gry & Mody</a>
+                <a href="#administracja" data-lang-pl="Serwery" data-lang-en="Servers">Serwery</a>
+                <a href="#galeria" data-lang-pl="Galeria" data-lang-en="Gallery">Galeria</a>
+                <a href="#sprzet" data-lang-pl="Sprzęt" data-lang-en="Hardware">Sprzęt</a>
+                <a href="#kontakt" data-lang-pl="Kontakt" data-lang-en="Contact">Kontakt</a>
+                <a href="#ksiega" data-lang-pl="Księga Gości" data-lang-en="Guestbook">Księga Gości</a>
                 <button class="btn-toggle" onclick="toggleLanguage()">🌐 PL / EN</button>
-                <button class="btn-toggle" onclick="toggleSoundFX()">🔊 Sound FX</button>
+                <button class="btn-toggle" id="sound-toggle-btn" onclick="toggleSoundFX()">🔊 Dźwięk: ON</button>
             </div>
         </div>
 
@@ -247,12 +856,20 @@
             </div>
             <h1 id="typewriter-title"></h1>
             
-            <div class="status-badge">
-                <div class="status-main-line">
-                    <span class="status-dot" id="status-dot-color"></span> 
-                    <span id="discord-status">Ładowanie statusu z Discorda...</span>
+            <div class="header-badges-row">
+                <div class="status-badge">
+                    <div class="status-main-line">
+                        <span class="status-dot" id="status-dot-color"></span> 
+                        <span id="discord-status">Ładowanie statusu z Discorda...</span>
+                    </div>
+                    <div class="activity-details" id="discord-activity"></div>
                 </div>
-                <div class="activity-details" id="discord-activity"></div>
+
+                <button class="like-btn" id="like-page-btn" onclick="likePage()">
+                    <span id="like-icon">❤️</span>
+                    <span id="like-label">Polub stronę</span>
+                    (<span id="like-count">48</span>)
+                </button>
             </div>
             
             <p class="bio-lead" data-lang-pl="Właściciel & Administrator Discord | Pasjonat Mechaniki Samochodowej oraz Nowych Technologii." data-lang-en="Discord Owner & Administrator | Automotive Mechanic & New Tech Enthusiast.">
@@ -260,23 +877,44 @@
             </p>
         </div>
 
+        <!-- Cytat dnia -->
         <div class="quote-box" id="daily-quote">💬 Ładowanie myśli dnia...</div>
 
         <!-- O mnie -->
         <section id="o-mnie">
-            <h2>📜 O mnie i Historia</h2>
-            <p style="margin-bottom: 10px;">Cześć! Jestem administratorem i twórcą społeczności internetowych. Zarządzam projektami na Discordzie i dbam o ich rozwój.</p>
-            <p>Poza komputerem moją pasją jest mechanika samochodowa, budowa silników spalinowych oraz symulatory pojazdów.</p>
+            <h2 data-lang-pl="📜 O mnie i Historia" data-lang-en="📜 About Me & Story">📜 O mnie i Historia</h2>
+            <p style="margin-bottom: 10px;" data-lang-pl="Cześć! Jestem administratorem i twórcą społeczności internetowych. Zarządzam projektami na Discordzie i dbam o ich rozwój." data-lang-en="Hi! I am an administrator and creator of online communities. I manage Discord projects and ensure their growth.">
+                Cześć! Jestem administratorem i twórcą społeczności internetowych. Zarządzam projektami na Discordzie i dbam o ich rozwój.
+            </p>
+            <p data-lang-pl="Poza komputerem moją pasją jest mechanika samochodowa, budowa silników spalinowych oraz symulatory pojazdów." data-lang-en="Outside of computers, my passion is automotive mechanics, building internal combustion engines, and vehicle simulators.">
+                Poza komputerem moją pasją jest mechanika samochodowa, budowa silników spalinowych oraz symulatory pojazdów.
+            </p>
         </section>
 
-        <!-- Staż -->
+        <!-- Staż (Naprawione daty bez tagów cytowań) -->
         <section id="staz">
-            <h2>⏱️ Mój Staż i Doświadczenie</h2>
+            <h2 data-lang-pl="⏱️ Mój Staż i Doświadczenie" data-lang-en="⏱️ Experience">⏱️ Mój Staż i Doświadczenie</h2>
             <div class="grid-box">
-                <div class="expand-card"><h3>💬 Discord</h3><div class="short-desc">Założenie pierwszego konta:</div><p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">12.06.2022 r.</p></div>
-                <div class="expand-card"><h3>⛏️ MIGMC</h3><div class="short-desc">Właściciel serwera od:</div><p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">27.06.2024 r.[cite: 5]</p></div>
-                <div class="expand-card"><h3>📢 Dzielnica Promocji</h3><div class="short-desc">Młodszy Head Admin od:</div><p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">02.07.2026 r.[cite: 5]</p></div>
-                <div class="expand-card"><h3>🛠️ SWDT</h3><div class="short-desc">Młodszy Pomocnik od:</div><p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">31.10.2026 r.[cite: 5]</p></div>
+                <div class="expand-card static-card">
+                    <h3>💬 Discord</h3>
+                    <div class="short-desc">Założenie pierwszego konta:</div>
+                    <p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">12.06.2022 r.</p>
+                </div>
+                <div class="expand-card static-card">
+                    <h3>⛏️ MIGMC</h3>
+                    <div class="short-desc">Właściciel serwera od:</div>
+                    <p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">27.06.2024 r.</p>
+                </div>
+                <div class="expand-card static-card">
+                    <h3>📢 Dzielnica Promocji</h3>
+                    <div class="short-desc">Młodszy Head Admin od:</div>
+                    <p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">02.07.2026 r.</p>
+                </div>
+                <div class="expand-card static-card">
+                    <h3>🛠️ SWDT</h3>
+                    <div class="short-desc">Młodszy Pomocnik od:</div>
+                    <p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:5px;">31.10.2026 r.</p>
+                </div>
             </div>
         </section>
 
@@ -285,16 +923,34 @@
             <h2>📦 HISTORIA & ARCHIWUM</h2>
             <p style="font-size: 13px; color: #8578aa; margin-bottom: 15px;">Stare Projekty & Dawny Staż</p>
             <div class="grid-box">
-                <div class="expand-card">
-                    <div class="expand-header"><div class="card-title-group"><span style="font-size: 24px;">🍐</span><h3>pearlmc.pl</h3></div><span class="archive-badge">Zakończony</span></div>
+                <div class="expand-card static-card">
+                    <div class="expand-header">
+                        <div class="card-title-group">
+                            <span style="font-size: 24px;">🍐</span>
+                            <h3>pearlmc.pl</h3>
+                        </div>
+                        <span class="archive-badge">Zakończony</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 10px;">Rola: <strong>Moderator</strong></div>
                 </div>
-                <div class="expand-card">
-                    <div class="expand-header"><div class="card-title-group"><img src="assest/wolfhub.png" alt="wolfhub" class="server-icon-img" onerror="this.style.display='none'"><h3>wolfhub.pl</h3></div><span class="archive-badge">Zakończony</span></div>
+                <div class="expand-card static-card">
+                    <div class="expand-header">
+                        <div class="card-title-group">
+                            <img src="assest/wolfhub.png" alt="wolfhub" class="server-icon-img" onerror="this.style.display='none'">
+                            <h3>wolfhub.pl</h3>
+                        </div>
+                        <span class="archive-badge">Zakończony</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 10px;">Rola: <strong>Starszy Admin (Senior Admin)</strong></div>
                 </div>
-                <div class="expand-card">
-                    <div class="expand-header"><div class="card-title-group"><img src="assest/wolfmc.png" alt="wolfmc" class="server-icon-img" onerror="this.style.display='none'"><h3>wolfmc.pl</h3></div><span class="archive-badge">Zakończony</span></div>
+                <div class="expand-card static-card">
+                    <div class="expand-header">
+                        <div class="card-title-group">
+                            <img src="assest/wolfmc.png" alt="wolfmc" class="server-icon-img" onerror="this.style.display='none'">
+                            <h3>wolfmc.pl</h3>
+                        </div>
+                        <span class="archive-badge">Zakończony</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 10px;">Rola: <strong>Moderator</strong></div>
                 </div>
             </div>
@@ -305,42 +961,51 @@
             <h2>🌐 KANAŁY SPOŁECZNOŚCIOWE</h2>
             <p style="font-size: 13px; color: #8578aa; margin-bottom: 15px;">Social Media (Link do profilu Discord)</p>
             <div class="grid-box">
-                <div class="expand-card" onclick="window.open('https://discord.com/users/1362042994781585678', '_blank')">
-                    <div class="expand-header"><div class="card-title-group"><span style="font-size: 24px;">💬</span><h3>Profil Discord</h3></div><span class="archive-badge" style="color: #00d4ff;">Otwórz ↗</span></div>
+                <div class="expand-card" onclick="playSoftClick(); window.open('https://discord.com/users/1362042994781585678', '_blank')">
+                    <div class="expand-header">
+                        <div class="card-title-group"><span style="font-size: 24px;">💬</span><h3>Profil Discord</h3></div>
+                        <span class="archive-badge" style="color: #00d4ff;">Otwórz ↗</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 8px;">@arrelYT557 — Oficjalny profil użytkownika</div>
                 </div>
-                <div class="expand-card" onclick="window.open('https://tiktok.com', '_blank')">
-                    <div class="expand-header"><div class="card-title-group"><span style="font-size: 24px;">🎵</span><h3>TikTok</h3></div><span class="archive-badge" style="color: #00d4ff;">Śledź ↗</span></div>
+                <div class="expand-card" onclick="playSoftClick(); window.open('https://tiktok.com', '_blank')">
+                    <div class="expand-header">
+                        <div class="card-title-group"><span style="font-size: 24px;">🎵</span><h3>TikTok</h3></div>
+                        <span class="archive-badge" style="color: #00d4ff;">Śledź ↗</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 8px;">@arrelyt557 — Materiały z symulatorów i mechaniki</div>
                 </div>
-                <div class="expand-card" onclick="window.open('https://youtube.com', '_blank')">
-                    <div class="expand-header"><div class="card-title-group"><span style="font-size: 24px;">▶️</span><h3>YouTube</h3></div><span class="archive-badge" style="color: #00d4ff;">Subskrybuj ↗</span></div>
+                <div class="expand-card" onclick="playSoftClick(); window.open('https://youtube.com', '_blank')">
+                    <div class="expand-header">
+                        <div class="card-title-group"><span style="font-size: 24px;">▶️</span><h3>YouTube</h3></div>
+                        <span class="archive-badge" style="color: #00d4ff;">Subskrybuj ↗</span>
+                    </div>
                     <div class="short-desc" style="margin-top: 8px;">@arrelYT557 — Oficjalny kanał wideo</div>
                 </div>
             </div>
         </section>
 
-        <!-- Gry & Mody oraz Statystyki Steam / Licznik godzin -->
+        <!-- Gry, Steam & Mody -->
         <section id="gry">
             <h2>🎮 Ulubione Gry, Steam & Mody</h2>
             <div class="grid-box" style="margin-bottom: 20px;">
-                <div class="expand-card">
+                <div class="expand-card static-card">
                     <h3>⏱️ Aktywność w Grach (Steam)</h3>
                     <div class="short-desc" style="margin-top:5px;">Śledzenie czasu w symulatorach</div>
-                    <p style="font-size:13px; color:#00d4ff; margin-top:8px;">BeamNG.drive & ETS2: <strong>Aktywny monitoring czasu w tle</strong></p>
+                    <p style="font-size:13px; color:#00d4ff; margin-top:8px;">BeamNG.drive & ETS2: <strong>Aktywny monitoring czasu</strong></p>
                 </div>
-                <div class="expand-card">
+                <div class="expand-card static-card">
                     <h3>🛠️ Ulubione Modyfikacje</h3>
                     <div class="short-desc" style="margin-top:5px;">Customowe konfiguracje aut i mapy</div>
-                    <p style="font-size:13px; color:#d8c7ff; margin-top:8px;">Zaawansowane mody fizyki pojazdów i części silnikowych w My Summer Car.</p>
+                    <p style="font-size:13px; color:#d8c7ff; margin-top:8px;">Zaawansowane mody fizyki pojazdów, silników i zawieszenia w BeamNG.drive oraz My Summer Car.</p>
                 </div>
             </div>
             <div class="grid-box">
                 <div class="expand-card" onclick="toggleCard(this)">
                     <div class="expand-header"><h3>🚗 BeamNG.drive</h3><span class="arrow-hint">▼ Rozwiń</span></div>
-                    <div class="short-desc">Realistyczny symulator zniszczeń</div>
+                    <div class="short-desc">Realistyczny symulator zniszczeń i fizyki aut</div>
                     <div class="details-content">
-                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Symulator z zaawansowaną fizyką ciał miękkich.</p>
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Symulator z zaawansowaną fizyką ciał miękkich odzwierciedlającą uszkodzenia zawieszenia i karoserii.</p>
                         <a href="https://store.steampowered.com/app/284160/BeamNGdrive/" target="_blank" class="btn-action btn-steam" onclick="event.stopPropagation();">🎮 Pokaż na Steam</a>
                     </div>
                 </div>
@@ -348,143 +1013,224 @@
                     <div class="expand-header"><h3>🛠️ My Summer Car</h3><span class="arrow-hint">▼ Rozwiń</span></div>
                     <div class="short-desc">Składanie auta śrubka po śrubce</div>
                     <div class="details-content">
-                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Budowanie samochodu od podstaw.</p>
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Budowanie samochodu od podstaw w fińskim klimacie lat 90.</p>
                         <a href="https://store.steampowered.com/app/516750/My_Summer_Car/" target="_blank" class="btn-action btn-steam" onclick="event.stopPropagation();">🎮 Pokaż na Steam</a>
+                    </div>
+                </div>
+                <div class="expand-card" onclick="toggleCard(this)">
+                    <div class="expand-header"><h3>🔧 Car Mechanic Sim</h3><span class="arrow-hint">▼ Rozwiń</span></div>
+                    <div class="short-desc">Warsztat i naprawa silników</div>
+                    <div class="details-content">
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Diagnozowanie usterek, rozbieranie silników i tuning pojazdów.</p>
+                        <a href="https://store.steampowered.com/app/645630/Car_Mechanic_Simulator_2018/" target="_blank" class="btn-action btn-steam" onclick="event.stopPropagation();">🎮 Pokaż na Steam</a>
+                    </div>
+                </div>
+                <div class="expand-card" onclick="toggleCard(this)">
+                    <div class="expand-header"><h3>🚛 Euro Truck Sim 2</h3><span class="arrow-hint">▼ Rozwiń</span></div>
+                    <div class="short-desc">Trasy ciężarówkami po Europie</div>
+                    <div class="details-content">
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Transport towarów i rozwój własnej firmy logistycznej.</p>
+                        <a href="https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/" target="_blank" class="btn-action btn-steam" onclick="event.stopPropagation();">🎮 Pokaż na Steam</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Serwery (MIGMC.aternos.me) -->
+        <!-- Serwery (MIGMC.aternos.me + Status online/offline i liczba graczy na żywo) -->
         <section id="administracja">
             <h2>🛡️ Administracja & Serwery</h2>
             <div class="grid-box">
                 <div class="expand-card" onclick="toggleCard(this)">
                     <div class="expand-header">
-                        <div class="card-title-group"><img src="assest/MIGMC.png" alt="MIGMC" class="server-icon-img" onerror="this.style.display='none'"><h3>1. MIGMC</h3></div>
+                        <div class="card-title-group">
+                            <img src="assest/MIGMC.png" alt="MIGMC" class="server-icon-img" onerror="this.style.display='none'">
+                            <h3>1. MIGMC</h3>
+                        </div>
                         <span class="arrow-hint">▼ Szczegóły</span>
                     </div>
                     <div class="short-desc">Właściciel & Realizator Partnerstw</div>
+                    <div class="mc-status-box">
+                        <span id="mc-server-state">Sprawdzanie statusu MC...</span>
+                        <span id="mc-server-players" style="color:#d8c7ff; font-weight:600;">-- / --</span>
+                    </div>
                     <div class="details-content">
-                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Serwer Minecraft (Aternos) oraz społeczność Discord.</p>
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Serwer Minecraft (MIGMC.aternos.me) oraz społeczność Discord.</p>
                         <button class="btn-action btn-discord" onclick="event.stopPropagation(); copyText('MIGMC.aternos.me', 'Skopiowano IP: MIGMC.aternos.me')">⛏️ Skopiuj IP: MIGMC.aternos.me</button>
                         <a href="https://discord.gg/W3vyTXeG79" target="_blank" class="btn-action btn-discord" onclick="event.stopPropagation();">💬 Dołącz na Discord</a>
                     </div>
                 </div>
+
                 <div class="expand-card" onclick="toggleCard(this)">
                     <div class="expand-header">
-                        <div class="card-title-group"><img src="dzienica.png" alt="" class="server-icon-img" onerror="this.style.display='none'"><h3>2. Dzielnica Promocji</h3></div>
+                        <div class="card-title-group">
+                            <img src="dzienica.png" alt="" class="server-icon-img" onerror="this.style.display='none'">
+                            <h3>2. Dzielnica Promocji</h3>
+                        </div>
                         <span class="arrow-hint">▼ Szczegóły</span>
                     </div>
                     <div class="short-desc">Młodszy Head Admin & Partnerstwa</div>
                     <div class="details-content">
-                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Społeczność promocyjna Discord.</p>
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Społeczność przeznaczona do promowania serwerów Discord.</p>
                         <a href="https://discord.gg/nG32jzYY63" target="_blank" class="btn-action btn-discord" onclick="event.stopPropagation();">💬 Dołącz na Discord</a>
                     </div>
                 </div>
+
                 <div class="expand-card" onclick="toggleCard(this)">
                     <div class="expand-header">
-                        <div class="card-title-group"><img src="swdt.png" alt="" class="server-icon-img" onerror="this.style.display='none'"><h3>3. SWDT</h3></div>
+                        <div class="card-title-group">
+                            <img src="swdt.png" alt="" class="server-icon-img" onerror="this.style.display='none'">
+                            <h3>3. SWDT</h3>
+                        </div>
                         <span class="arrow-hint">▼ Szczegóły</span>
                     </div>
                     <div class="short-desc">Młodszy Pomocnik & Partnerstwa</div>
                     <div class="details-content">
-                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Serwer Wsparcia Dla Techników.</p>
+                        <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Serwer Wsparcia Dla Techników – pomoc przy botach i konfiguracji.</p>
                         <a href="https://discord.gg/pAFMdN4HdM" target="_blank" class="btn-action btn-discord" onclick="event.stopPropagation();">💬 Dołącz na Discord</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Galeria Garażowa (Placeholder na folder ze zdjęciami + Statystyka 73 aut) -->
+        <!-- Galeria Garażowa + Galeria Gier -->
         <section id="galeria">
-            <h2>🖼️ Galeria Garażowa & Naprawione Auta</h2>
+            <h2>🖼️ Galeria Garażowa & Zrzuty z Gier</h2>
+            
             <div class="grid-box" style="margin-bottom: 20px;">
-                <div class="expand-card">
+                <div class="expand-card static-card">
                     <h3>🔧 Statystyka Warsztatu</h3>
                     <div class="short-desc" style="margin-top:5px;">Liczba zrealizowanych projektów mechanicznych</div>
                     <p style="font-size:24px; font-weight:800; color:#00ff88; margin-top:8px;">73 naprawione auta</p>
                 </div>
             </div>
-            <div class="gallery-placeholder">
-                📁 Folder na zdjęcia w przygotowaniu. Wkrótce pojawią się tutaj fotki z naprawionych aut i projektów!
+
+            <div class="gallery-filter">
+                <button class="btn-toggle active-filter" id="filter-all" onclick="filterGallery('all', this)">Wszystkie (3)</button>
+                <button class="btn-toggle" id="filter-garaz" onclick="filterGallery('garaz', this)">🔧 Galeria Garażowa (2)</button>
+                <button class="btn-toggle" id="filter-gry" onclick="filterGallery('gry', this)">🎮 Gry (1)</button>
             </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item cat-garaz" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów.jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 1)')">
+                    <img src="galeria garażowa/opel zafira b wymiana pokrywy zaworów.jpg" alt="Opel Zafira B wymiana pokrywy zaworów">
+                    <div class="gallery-caption">🔧 Opel Zafira B — Wymiana pokrywy zaworów (1)</div>
+                </div>
+
+                <div class="gallery-item cat-garaz" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów (2).jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 2)')">
+                    <img src="galeria garażowa/opel zafira b wymiana pokrywy zaworów (2).jpg" alt="Opel Zafira B wymiana pokrywy zaworów 2">
+                    <div class="gallery-caption">🔧 Opel Zafira B — Wymiana pokrywy zaworów (2)</div>
+                </div>
+
+                <div class="gallery-item cat-gry" onclick="openLightbox('galeria/beamng.png', 'BeamNG.drive — Symulator fizyki')">
+                    <img src="galeria/beamng.png" alt="BeamNG Screenshot">
+                    <div class="gallery-caption">🎮 BeamNG.drive — Zrzut z gry</div>
+                </div>
+            </div>
+            <p style="font-size:12px; color:#8578aa; margin-top:10px;">Kliknij w dowolne zdjęcie, aby otworzyć powiększenie na cały ekran.</p>
         </section>
 
-        <!-- Specyfikacja Sklepowa -->
+        <!-- Sprzęt (Zmieniony tytuł na samo 💻 Sprzęt + Pełna Specyfikacja w kartach) -->
         <section id="sprzet">
-            <h2>💻 Sprzęt & Pełna Specyfikacja Sklepowa</h2>
+            <h2>💻 Sprzęt</h2>
             <div class="grid-box">
+                
                 <div class="expand-card" onclick="toggleCard(this)">
-                    <div class="expand-header"><h3>📱 Realme GT Neo 2</h3><span class="arrow-hint">▼ Rozwiń</span></div>
+                    <div class="expand-header">
+                        <h3>📱 Realme GT Neo 2</h3>
+                        <span class="arrow-hint">▼ Rozwiń specyfikację</span>
+                    </div>
                     <div class="short-desc">12 GB RAM / 256 GB / Komora VC</div>
                     <div class="details-content">
-                        <div class="device-summary">Flagowy pogromca wydajności. System chłodzenia Vapor Chamber (VC).</div>
+                        <div class="device-summary">Flagowy pogromca wydajności. Wyposażony w diamentowy system chłodzenia parowego Vapor Chamber (VC), gwarantujący płynność w najwyższych obciążeniach.</div>
                         <ul class="spec-list">
-                            <li><span>Procesor:</span> <strong>Qualcomm Snapdragon 870 5G (do 3.2 GHz)</strong></li>
+                            <li><span>Procesor:</span> <strong>Qualcomm Snapdragon 870 5G (8 rdzeni, do 3.2 GHz)</strong></li>
+                            <li><span>Układ graficzny:</span> <strong>Adreno 650</strong></li>
                             <li><span>Pamięć RAM:</span> <strong>12 GB LPDDR5</strong></li>
                             <li><span>Pamięć wbudowana:</span> <strong>256 GB UFS 3.1</strong></li>
-                            <li><span>Bateria:</span> <strong>5000 mAh + SuperDart 65W</strong></li>
+                            <li><span>Typ ekranu:</span> <strong>AMOLED E4 (Samsung)</strong></li>
+                            <li><span>Przekątna ekranu:</span> <strong>6,62"</strong></li>
+                            <li><span>Rozdzielczość ekranu:</span> <strong>2400 x 1080 px (FHD+)</strong></li>
+                            <li><span>Częstotliwość odświeżania:</span> <strong>120 Hz (Dotyk 600 Hz)</strong></li>
+                            <li><span>Pojemność baterii:</span> <strong>5000 mAh</strong></li>
+                            <li><span>Szybkie ładowanie:</span> <strong>SuperDart Charge 65W (100% w ~36 min)</strong></li>
+                            <li><span>Aparaty tył:</span> <strong>64.0 Mpix + 8.0 Mpix (szerokokątny) + 2.0 Mpix (makro)</strong></li>
+                            <li><span>Aparat przód:</span> <strong>16.0 Mpix</strong></li>
+                            <li><span>Łączność:</span> <strong>5G, Wi-Fi 6, Bluetooth 5.2, NFC</strong></li>
+                            <li><span>System nawigacji:</span> <strong>GPS, A-GPS, Beidou, GLONASS, Galileo</strong></li>
+                            <li><span>Dźwięk:</span> <strong>Głośniki stereo z Dolby Atmos, Hi-Res Audio</strong></li>
+                            <li><span>System operacyjny:</span> <strong>realme UI (Android)</strong></li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="expand-card" onclick="toggleCard(this)">
-                    <div class="expand-header"><h3>💻 ASUS TUF Gaming F16</h3><span class="arrow-hint">▼ Rozwiń</span></div>
-                    <div class="short-desc">Intel Core i5-1210H / RTX 3050 6GB</div>
+                    <div class="expand-header">
+                        <h3>💻 ASUS TUF Gaming F16</h3>
+                        <span class="arrow-hint">▼ Rozwiń specyfikację</span>
+                    </div>
+                    <div class="short-desc">Intel Core i5-1210H / RTX 3050 6GB / Arc Flow</div>
                     <div class="details-content">
-                        <div class="device-summary">Wzmocniony laptop gamingowy z normą MIL-STD-810H.</div>
+                        <div class="device-summary">Wzmocniony laptop gamingowy z normą wytrzymałości wojskowej MIL-STD-810H oraz zaawansowanym chłodzeniem podwójnymi wentylatorami Arc Flow.</div>
                         <ul class="spec-list">
-                            <li><span>Procesor:</span> <strong>Intel Core i5-1210H (do 4.40 GHz)</strong></li>
-                            <li><span>Karta graficzna:</span> <strong>NVIDIA GeForce RTX 3050 6GB</strong></li>
+                            <li><span>Procesor:</span> <strong>Intel Core i5-1210H (12 wątków, 18MB Cache, do 4.40 GHz)</strong></li>
+                            <li><span>Karta graficzna:</span> <strong>NVIDIA GeForce RTX 3050 6GB Laptop GPU</strong></li>
                             <li><span>Pamięć RAM:</span> <strong>DDR4 16GB</strong></li>
                             <li><span>Dysk:</span> <strong>2x SSD 514GB</strong></li>
+                            <li><span>Moc GPU (TGP):</span> <strong>Do 95W z Dynamic Boost</strong></li>
+                            <li><span>Grafika zintegrowana:</span> <strong>Intel Graphics / Iris Xe</strong></li>
+                            <li><span>Typ ekranu:</span> <strong>16" IPS WUXGA (1920 x 1200), format 16:10</strong></li>
+                            <li><span>Odświeżanie ekranu:</span> <strong>165 Hz z obsługą G-Sync</strong></li>
+                            <li><span>System chłodzenia:</span> <strong>Podwójne wentylatory Arc Flow Fans + 4 wyloty powietrza</strong></li>
+                            <li><span>Certyfikat wytrzymałości:</span> <strong>Wojskowa norma MIL-STD-810H</strong></li>
+                            <li><span>Klawiatura:</span> <strong>Podświetlana RGB z sekcją numeryczną (Klawisze WASD)</strong></li>
+                            <li><span>Łączność bezprzewodowa:</span> <strong>Wi-Fi 6 (802.11ax) + Bluetooth 5.2</strong></li>
+                            <li><span>Złącza / Porty:</span> <strong>1x Thunderbolt 4, 1x USB-C 3.2 Gen 2, 2x USB 3.2 Gen 1</strong></li>
+                            <li><span>Wyjścia wideo:</span> <strong>HDMI 2.1 FRL</strong></li>
+                            <li><span>Audio:</span> <strong>Dolby Atmos, technologia dwukierunkowej redukcji szumów AI</strong></li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="expand-card" onclick="toggleCard(this)">
-                    <div class="expand-header"><h3>🎧 Baseus Bass BH 1 Lite</h3><span class="arrow-hint">▼ Rozwiń</span></div>
+                    <div class="expand-header">
+                        <h3>🎧 Baseus Bass BH 1 Lite</h3>
+                        <span class="arrow-hint">▼ Rozwiń specyfikację</span>
+                    </div>
                     <div class="short-desc">Wokółuszne słuchawki bezprzewodowe</div>
                     <div class="details-content">
-                        <div class="device-summary">Ergonomiczne słuchawki z głębokim basem i trybem niskiego opóźnienia.</div>
+                        <div class="device-summary">Ergonomiczne słuchawki bezprzewodowe z głębokim podbiciem basowym oraz trybem ultra-niskiego opóźnienia do gier.</div>
                         <ul class="spec-list">
+                            <li><span>Model:</span> <strong>Baseus Bass BH 1 Lite</strong></li>
+                            <li><span>Typ słuchawek:</span> <strong>Wokółuszne, zamknięte (Over-Ear)</strong></li>
                             <li><span>Łączność:</span> <strong>Bluetooth 5.3</strong></li>
-                            <li><span>Czas pracy:</span> <strong>Do 40-50 godzin</strong></li>
-                            <li><span>Przetworniki:</span> <strong>Dynamiczne 40 mm</strong></li>
+                            <li><span>Zasięg transmisji:</span> <strong>Do 10 metrów</strong></li>
+                            <li><span>Średnica przetworników:</span> <strong>Dynamiczne 40 mm</strong></li>
+                            <li><span>Pasmo przenoszenia:</span> <strong>20 Hz - 20 000 Hz</strong></li>
+                            <li><span>Tryb niskiego opóźnienia:</span> <strong>Gaming Low Latency (0.038s)</strong></li>
+                            <li><span>Redukcja szumów:</span> <strong>Pasywne wygłuszenie wokółuszne</strong></li>
+                            <li><span>Czas pracy:</span> <strong>Do 40-50 godzin odtwarzania</strong></li>
+                            <li><span>Złącze ładowania:</span> <strong>USB Type-C</strong></li>
+                            <li><span>Materiał wykonania:</span> <strong>Wysokiej jakości kompozyt + miękka pianka memory</strong></li>
                         </ul>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Księga Gości (Zapisująca dane lokalnie / plikowa symulacja) -->
-        <section id="ksiega">
-            <h2>📖 Księga Gości</h2>
-            <p style="font-size:13px; color:#b5a9d6; margin-bottom:10px;">Zostaw swój ślad na stronie! Wpisy zapisują się w pamięci przeglądarki.</p>
-            <div class="expand-card" style="cursor:default;">
-                <div class="guestbook-form">
-                    <input type="text" id="gb-name" class="guestbook-input" placeholder="Twój nick / Discord">
-                    <textarea id="gb-msg" class="guestbook-input" placeholder="Twoja wiadomość..." rows="2" style="resize:none;"></textarea>
-                    <button class="btn-action btn-discord" onclick="addGuestbookEntry()">✍️ Dodaj wpis</button>
-                </div>
-                <div class="guestbook-entries" id="guestbook-list">
-                    <!-- Tutaj pojawiają się wpisy -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Hall of Fame (Wkrótce) & Usługi -->
+        <!-- Hall of Fame & Pomoc Techniczna -->
         <section id="hof">
             <h2>🏆 Hall of Fame & Pomoc Techniczna</h2>
             <div class="grid-box">
-                <div class="expand-card">
+                <div class="expand-card static-card">
                     <h3>🏆 Hall of Fame</h3>
                     <div class="short-desc" style="margin-top:5px;">Wyróżnienia i podziękowania</div>
                     <p style="font-size:15px; font-weight:700; color:#00d4ff; margin-top:10px; text-align:center;">Wkrótce</p>
                 </div>
-                <div class="expand-card">
+                <div class="expand-card static-card">
                     <h3>🛠️ Usługi & Pomoc Techniczna</h3>
                     <div class="short-desc" style="margin-top:5px;">Pomoc przy serwerach i konfiguracji</div>
-                    <p style="font-size:13px; color:#b5a9d6; margin-top:8px;">Oferuję wsparcie w konfiguracji botów Discord oraz zarządzaniu społecznościami.</p>
+                    <p style="font-size:13px; color:#b5a9d6; margin-top:8px;">Oferuję wsparcie w konfiguracji botów Discord, permisji oraz zarządzaniu społecznościami.</p>
                 </div>
             </div>
         </section>
@@ -504,121 +1250,453 @@
             </div>
         </section>
 
-        <div class="footer">&copy; 2026 arrelYT557. Wszystkie prawa zastrzeżone. | Odwiedzin: <span id="visit-count">1</span></div>
+        <!-- Księga Gości NA SAMYM KOŃCU + Zapis do pliku .json -->
+        <section id="ksiega" style="margin-bottom: 10px;">
+            <h2>📖 Księga Gości & Zapis Danych (.json)</h2>
+            <div class="guestbook-toolbar">
+                <p style="font-size:13px; color:#b5a9d6;">Zostaw swój ślad na stronie! Wpisy i statystyki można wyeksportować lub wczytać z pliku <code>dane_strony.json</code>.</p>
+                <div class="json-controls">
+                    <button class="btn-action btn-json" onclick="exportDataToJSON()">💾 Pobierz dane_strony.json</button>
+                    <button class="btn-action btn-json" onclick="document.getElementById('json-file-input').click()">📂 Wczytaj .json</button>
+                    <input type="file" id="json-file-input" accept=".json" style="display:none;" onchange="importDataFromJSON(event)">
+                </div>
+            </div>
+            
+            <div class="expand-card static-card">
+                <div class="guestbook-form">
+                    <input type="text" id="gb-name" class="guestbook-input" placeholder="Twój nick / Discord (np. Janek#1234)">
+                    <textarea id="gb-msg" class="guestbook-input" placeholder="Twoja wiadomość w księdze gości..." rows="2" style="resize:none;"></textarea>
+                    <button class="btn-action btn-discord" onclick="addGuestbookEntry()">✍️ Dodaj wpis i zapisz</button>
+                </div>
+                <div class="guestbook-entries" id="guestbook-list"></div>
+            </div>
+        </section>
+
+        <!-- Stopka -->
+        <div class="footer">
+            &copy; 2026 arrelYT557. Wszystkie prawa zastrzeżone. | Odwiedzin: <span id="visit-count">1</span> | Polubień: <span id="footer-like-count">48</span>
+        </div>
     </div>
 
+    <!-- Lightbox do zdjęć -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Powiadomienia Toast -->
     <div id="toast"></div>
 
     <script>
-        /* Ukrycie loadera po załadowaniu strony */
+        /* =========================================================
+           1. SPLASH SCREEN / LOADER
+           ========================================================= */
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
             splash.style.opacity = '0';
-            setTimeout(() => splash.style.display = 'none', 600);
-            loadGuestbook();
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 600);
+            initStorageAndState();
+            fetchMinecraftStatus();
+            setInterval(fetchMinecraftStatus, 30000);
         });
 
+        /* =========================================================
+           2. PRZYJEMNIEJSZY DŹWIĘK KLIKANIA (MIĘKKI TON WEB AUDIO)
+           ========================================================= */
         let soundEnabled = true;
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let audioCtx = null;
 
-        function playSound() {
+        function playSoftClick() {
             if (!soundEnabled) return;
             try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                const now = audioCtx.currentTime;
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-                osc.connect(gain); gain.connect(audioCtx.destination);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.05);
-            } catch(e) {}
+
+                // Ciepły, miękki ton przypominający delikatne kliknięcie interfejsu
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(420, now);
+                osc.frequency.exponentialRampToValueAtTime(220, now + 0.045);
+
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.linearRampToValueAtTime(0.06, now + 0.008);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now);
+                osc.stop(now + 0.06);
+            } catch (e) {}
         }
 
+        function toggleSoundFX() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('sound-toggle-btn');
+            btn.innerText = soundEnabled ? '🔊 Dźwięk: ON' : '🔇 Dźwięk: OFF';
+            if (soundEnabled) playSoftClick();
+            showToast(soundEnabled ? "Przyjemny dźwięk klikania włączony 🔊" : "Dźwięk wyłączony 🔇");
+        }
+
+        /* =========================================================
+           3. ROZWIJANIE KART (SPECIFIKACJE, GRY, SERWERY)
+           ========================================================= */
         function toggleCard(card) {
-            playSound();
+            playSoftClick();
             const isOpen = card.classList.contains('open');
             card.classList.toggle('open');
             const hint = card.querySelector('.arrow-hint');
             if (hint) {
-                hint.innerText = !isOpen ? '▲ Zwiń' : '▼ Rozwiń';
+                if (hint.innerText.includes('specyfikację')) {
+                    hint.innerText = !isOpen ? '▲ Zwiń specyfikację' : '▼ Rozwiń specyfikację';
+                } else if (hint.innerText.includes('Szczegóły')) {
+                    hint.innerText = !isOpen ? '▲ Ukryj' : '▼ Szczegóły';
+                } else {
+                    hint.innerText = !isOpen ? '▲ Zwiń' : '▼ Rozwiń';
+                }
             }
         }
 
-        function toggleSoundFX() { 
-            soundEnabled = !soundEnabled; 
-            copyText('', soundEnabled ? "Dźwięki włączone 🔊" : "Dźwięki wyłączone 🔇"); 
-        }
-
-        let currentLang = 'pl';
-        function toggleLanguage() {
-            currentLang = currentLang === 'pl' ? 'en' : 'pl';
-            document.querySelectorAll('[data-lang-pl]').forEach(el => {
-                el.innerText = el.getAttribute(`data-lang-${currentLang}`);
+        /* =========================================================
+           4. FILTROWANIE GALERII & LIGHTBOX
+           ========================================================= */
+        function filterGallery(category, btnElement) {
+            playSoftClick();
+            document.querySelectorAll('.gallery-filter .btn-toggle').forEach(btn => {
+                btn.classList.remove('active-filter');
             });
-            copyText('', currentLang === 'pl' ? "Język: Polski 🇵🇱" : "Language: English 🇬🇧");
+            if (btnElement) btnElement.classList.add('active-filter');
+
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else if (item.classList.contains('cat-' + category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
 
-        function copyURL() {
-            navigator.clipboard.writeText(window.location.href);
-            copyText('', 'Skopiowano link do strony! 🔗');
+        function openLightbox(src, caption) {
+            playSoftClick();
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox-caption").innerText = caption || '';
+            document.getElementById("lightbox").style.display = "flex";
         }
 
-        const quotes = [
-            "„Nie liczy się to, kim się urodziłeś, ale czym wyrastasz.”",
-            "„Dobre projekty nie powstają z przypadku, lecz z zaangażowania.”",
-            "„Mechanika i kod mają jedno wspólne: wszystko musi pasować co do milimetra.”",
-            "„Zawsze gotowy do pomocy i dalszego rozwoju.”"
-        ];
-        const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-        document.getElementById("daily-quote").innerHTML = `💬 Cytat dnia: ${quotes[dayOfYear % quotes.length]}`;
-
-        const text = "arrelYT557"; let index = 0;
-        function typeWriter() {
-            if (index < text.length) { 
-                document.getElementById("typewriter-title").innerHTML += text.charAt(index); 
-                index++; 
-                setTimeout(typeWriter, 120); 
-            }
-        }
-        typeWriter();
-
-        function copyText(textToCopy, msg) {
-            if (textToCopy) navigator.clipboard.writeText(textToCopy);
-            if (msg) {
-                const toast = document.getElementById("toast");
-                toast.innerText = msg; toast.style.display = "block";
-                setTimeout(() => { toast.style.display = "none"; }, 3000);
-            }
+        function closeLightbox() {
+            playSoftClick();
+            document.getElementById("lightbox").style.display = "none";
         }
 
-        /* Obsługa Księgi Gości (zapis do pamięci / danych plikowych przeglądarki) */
-        function addGuestbookEntry() {
-            const name = document.getElementById('gb-name').value.trim();
-            const msg = document.getElementById('gb-msg').value.trim();
-            if(!name || !msg) {
-                copyText('', 'Wypełnij oba pola wpisu!');
+        /* =========================================================
+           5. STATUS SERWERA MINECRAFT (MIGMC.aternos.me)
+           ========================================================= */
+        function fetchMinecraftStatus() {
+            const stateEl = document.getElementById('mc-server-state');
+            const playersEl = document.getElementById('mc-server-players');
+            if (!stateEl || !playersEl) return;
+
+            fetch('https://api.mcsrvstat.us/2/MIGMC.aternos.me')
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.online) {
+                        stateEl.innerHTML = '<span class="mc-pill-online">🟢 Włączony (Online)</span>';
+                        const onlineCount = data.players ? data.players.online : 0;
+                        const maxCount = data.players ? data.players.max : 20;
+                        playersEl.innerText = `Gracze: ${onlineCount} / ${maxCount}`;
+                    } else {
+                        stateEl.innerHTML = '<span class="mc-pill-offline">🔴 Wyłączony (Offline)</span>';
+                        playersEl.innerText = 'Gracze: 0 / 0';
+                    }
+                })
+                .catch(() => {
+                    stateEl.innerHTML = '<span class="mc-pill-offline">⚪ Status niedostępny</span>';
+                    playersEl.innerText = 'Gracze: -- / --';
+                });
+        }
+
+        /* =========================================================
+           6. SYSTEM POLUBIEŃ (TYLKO RAZ NA UŻYTKOWNIKA)
+           ========================================================= */
+        function likePage() {
+            playSoftClick();
+            const alreadyLiked = localStorage.getItem('arrel_page_liked') === 'true';
+            if (alreadyLiked) {
+                showToast('Już polubiłeś tę stronę! ❤️');
                 return;
             }
-            let entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
-            entries.unshift({ name, msg, date: new Date().toLocaleDateString() });
-            localStorage.setItem('guestbook_entries', JSON.stringify(entries));
-            document.getElementById('gb-name').value = '';
-            document.getElementById('gb-msg').value = '';
+
+            let currentLikes = parseInt(localStorage.getItem('arrel_like_count') || '48', 10);
+            currentLikes += 1;
+
+            localStorage.setItem('arrel_like_count', currentLikes.toString());
+            localStorage.setItem('arrel_page_liked', 'true');
+
+            updateLikeUI();
+            showToast('Dziękuję za polubienie strony! ❤️');
+        }
+
+        function updateLikeUI() {
+            const currentLikes = parseInt(localStorage.getItem('arrel_like_count') || '48', 10);
+            const alreadyLiked = localStorage.getItem('arrel_page_liked') === 'true';
+
+            const btn = document.getElementById('like-page-btn');
+            const countSpan = document.getElementById('like-count');
+            const footerCountSpan = document.getElementById('footer-like-count');
+            const labelSpan = document.getElementById('like-label');
+
+            if (countSpan) countSpan.innerText = currentLikes;
+            if (footerCountSpan) footerCountSpan.innerText = currentLikes;
+
+            if (alreadyLiked && btn) {
+                btn.classList.add('liked');
+                btn.disabled = true;
+                if (labelSpan) labelSpan.innerText = 'Polubiono';
+            }
+        }
+
+        /* =========================================================
+           7. PAMIĘĆ DANYCH, KSIĘGA GOŚCI & PLIK .JSON
+           ========================================================= */
+        const STORAGE_KEY = 'arrelYT557_site_data_v1';
+
+        function getSiteDataObject() {
+            let entries = [];
+            try {
+                entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
+            } catch (e) {
+                entries = [];
+            }
+
+            return {
+                owner: 'arrelYT557',
+                lastUpdated: new Date().toISOString(),
+                visits: parseInt(localStorage.getItem('visits_count') || '1', 10),
+                likes: parseInt(localStorage.getItem('arrel_like_count') || '48', 10),
+                userLiked: localStorage.getItem('arrel_page_liked') === 'true',
+                guestbook: entries
+            };
+        }
+
+        function syncBackupToStorage() {
+            const dataObj = getSiteDataObject();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObj));
+        }
+
+        function initStorageAndState() {
+            // Licznik odwiedzin
+            let visits = parseInt(localStorage.getItem('visits_count') || '0', 10) + 1;
+            localStorage.setItem('visits_count', visits.toString());
+            document.getElementById('visit-count').innerText = visits;
+
+            updateLikeUI();
             loadGuestbook();
-            copyText('', 'Dodano wpis do księgi gości! ✍️');
+            syncBackupToStorage();
+        }
+
+        function addGuestbookEntry() {
+            playSoftClick();
+            const nameInput = document.getElementById('gb-name');
+            const msgInput = document.getElementById('gb-msg');
+            const name = nameInput.value.trim();
+            const msg = msgInput.value.trim();
+
+            if (!name || !msg) {
+                showToast('Wpisz swój nick oraz treść wiadomości!');
+                return;
+            }
+
+            let entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
+            const now = new Date();
+            const dateFormatted = now.toLocaleDateString('pl-PL') + ' ' + now.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+
+            entries.unshift({
+                name: name,
+                msg: msg,
+                date: dateFormatted
+            });
+
+            localStorage.setItem('guestbook_entries', JSON.stringify(entries));
+            syncBackupToStorage();
+
+            nameInput.value = '';
+            msgInput.value = '';
+            loadGuestbook();
+            showToast('Dodano wpis i zapisano dane! ✍️');
         }
 
         function loadGuestbook() {
             const list = document.getElementById('guestbook-list');
-            if(!list) return;
+            if (!list) return;
+
             let entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
-            if(entries.length === 0) {
-                list.innerHTML = '<div class="guestbook-msg">Brak wpisów. Bądź pierwszy!</div>';
+            if (entries.length === 0) {
+                list.innerHTML = '<div class="guestbook-msg">Brak wpisów w księdze gości. Bądź pierwszy i zostaw ślad!</div>';
                 return;
             }
-            list.innerHTML = entries.map(e => `<div class="guestbook-msg"><strong>${e.name}</strong> (${e.date}): ${e.msg}</div>`).join('');
+
+            list.innerHTML = entries.map(e => `
+                <div class="guestbook-msg">
+                    <div class="guestbook-msg-meta"><strong>${escapeHTML(e.name)}</strong> • ${escapeHTML(e.date)}</div>
+                    <div>${escapeHTML(e.msg)}</div>
+                </div>
+            `).join('');
         }
 
-        /* Status Discord Lanyard */
+        function escapeHTML(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function exportDataToJSON() {
+            playSoftClick();
+            const dataObj = getSiteDataObject();
+            const jsonString = JSON.stringify(dataObj, null, 2);
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'dane_strony.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast('Zapisano plik dane_strony.json 💾');
+        }
+
+        function importDataFromJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (parsed.guestbook && Array.isArray(parsed.guestbook)) {
+                        localStorage.setItem('guestbook_entries', JSON.stringify(parsed.guestbook));
+                    }
+                    if (typeof parsed.likes === 'number') {
+                        localStorage.setItem('arrel_like_count', parsed.likes.toString());
+                    }
+                    if (typeof parsed.userLiked === 'boolean') {
+                        localStorage.setItem('arrel_page_liked', parsed.userLiked ? 'true' : 'false');
+                    }
+                    if (typeof parsed.visits === 'number') {
+                        localStorage.setItem('visits_count', parsed.visits.toString());
+                        document.getElementById('visit-count').innerText = parsed.visits;
+                    }
+
+                    updateLikeUI();
+                    loadGuestbook();
+                    syncBackupToStorage();
+                    showToast('Wczytano dane z pliku .json! 📂');
+                } catch (err) {
+                    showToast('Błąd: nieprawidłowy format pliku .json!');
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        /* =========================================================
+           8. ROZBUDOWANA LISTA CYTATÓW DNIA (20 CYTATÓW)
+           ========================================================= */
+        const quotes = [
+            "„Nie liczy się to, kim się urodziłeś, ale czym wyrastasz.”",
+            "„Dobre projekty nie powstają z przypadku, lecz z zaangażowania.”",
+            "„Mechanika i kod mają jedno wspólne: wszystko musi pasować co do milimetra.”",
+            "„Zawsze gotowy do pomocy i dalszego rozwoju.”",
+            "„Każda śrubka ma swoje miejsce, tak jak każda linijka kodu swoje zadanie.”",
+            "„Pasja zamienia zwykłą pracę w coś, co daje prawdziwą satysfakcję.”",
+            "„Nie bój się rozebrać silnika ani kodu – dopiero wtedy zrozumiesz, jak działają.”",
+            "„Cierpliwość w warsztacie i przy komputerze zawsze procentuje.”",
+            "„Najlepsze społeczności buduje się na zaufaniu i dobrej atmosferze.”",
+            "„Detale decydują o tym, czy coś działa dobrze, czy perfekcyjnie.”",
+            "„73 naprawione auta to nie przypadek – to doświadczenie zdobyte własnymi rękami.”",
+            "„Kiedy silnik odpala za pierwszym razem po remoncie, wiesz, że było warto.”",
+            "„Technologia idzie do przodu, ale solidna robota zawsze pozostaje w cenie.”",
+            "„Błędy są po to, żeby je diagnozować i naprawiać – zarówno w aucie, jak i w skrypcie.”",
+            "„Dobra administracja to taka, dzięki której społeczność czuje się jak u siebie.”",
+            "„Nie odkładaj na jutro tego, co możesz dokręcić i przetestować dzisiaj.”",
+            "„Moc bez kontroli nic nie znaczy – tak na drodze, jak i w zarządzaniu serwerem.”",
+            "„Małe kroki każdego dnia prowadzą do wielkich projektów.”",
+            "„Prawdziwy pasjonat nigdy nie przestaje się uczyć nowych rzeczy.”",
+            "„Porządek w narzędziach i w plikach to połowa sukcesu.”"
+        ];
+
+        const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+        document.getElementById("daily-quote").innerHTML = `💬 Cytat dnia: ${quotes[dayOfYear % quotes.length]}`;
+
+        /* =========================================================
+           9. EFEKT PISANIA TYTUŁU, JĘZYK, SCHOWEK I TOAST
+           ========================================================= */
+        const titleText = "arrelYT557";
+        let titleIndex = 0;
+        function typeWriter() {
+            if (titleIndex < titleText.length) {
+                document.getElementById("typewriter-title").innerHTML += titleText.charAt(titleIndex);
+                titleIndex++;
+                setTimeout(typeWriter, 115);
+            }
+        }
+        typeWriter();
+
+        let currentLang = 'pl';
+        function toggleLanguage() {
+            playSoftClick();
+            currentLang = currentLang === 'pl' ? 'en' : 'pl';
+            document.querySelectorAll('[data-lang-pl]').forEach(el => {
+                el.innerText = el.getAttribute(`data-lang-${currentLang}`);
+            });
+            showToast(currentLang === 'pl' ? "Język: Polski 🇵🇱" : "Language: English 🇬🇧");
+        }
+
+        function copyText(textToCopy, msg) {
+            playSoftClick();
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy);
+            }
+            if (msg) {
+                showToast(msg);
+            }
+        }
+
+        function copyURL() {
+            playSoftClick();
+            navigator.clipboard.writeText(window.location.href);
+            showToast('Skopiowano link do portfolio! 🔗');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.style.display = "block";
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toast.style.display = "none";
+            }, 3200);
+        }
+
+        /* =========================================================
+           10. STATUS DISCORD LANYARD NA ŻYWO
+           ========================================================= */
         function fetchDiscordStatus() {
             fetch('https://api.lanyard.rest/v1/users/1362042994781585678')
                 .then(res => res.json())
@@ -629,10 +1707,23 @@
                     
                     if (data.success && data.data) {
                         const status = data.data.discord_status;
-                        if (status === "online") { statusElem.innerHTML = "Status: Online 🟢"; dotElem.style.background = "#00ff88"; }
-                        else if (status === "idle") { statusElem.innerHTML = "Status: Zaraz wracam 🌙"; dotElem.style.background = "#ffbb00"; }
-                        else if (status === "dnd") { statusElem.innerHTML = "Status: Nie przeszkadzać ⛔"; dotElem.style.background = "#ff4444"; }
-                        else { statusElem.innerHTML = "Status: Offline ⚪"; dotElem.style.background = "#888888"; }
+                        if (status === "online") {
+                            statusElem.innerHTML = "Status: Online 🟢";
+                            dotElem.style.background = "#00ff88";
+                            dotElem.style.boxShadow = "0 0 10px #00ff88";
+                        } else if (status === "idle") {
+                            statusElem.innerHTML = "Status: Zaraz wracam 🌙";
+                            dotElem.style.background = "#ffbb00";
+                            dotElem.style.boxShadow = "0 0 10px #ffbb00";
+                        } else if (status === "dnd") {
+                            statusElem.innerHTML = "Status: Nie przeszkadzać ⛔";
+                            dotElem.style.background = "#ff4444";
+                            dotElem.style.boxShadow = "0 0 10px #ff4444";
+                        } else {
+                            statusElem.innerHTML = "Status: Offline ⚪";
+                            dotElem.style.background = "#888888";
+                            dotElem.style.boxShadow = "none";
+                        }
 
                         let actDetails = [];
                         if (data.data.listening_to_spotify) {
@@ -641,41 +1732,56 @@
                         }
                         if (data.data.activities && data.data.activities.length > 0) {
                             data.data.activities.forEach(act => {
-                                if (act.type === 0) actDetails.push(`🎮 Gra w: <strong>${act.name}</strong>`);
-                                else if (act.type === 4 && act.state) actDetails.push(`💬 Custom: ${act.state}`);
+                                if (act.type === 0) {
+                                    actDetails.push(`🎮 Gra w: <strong>${act.name}</strong>`);
+                                } else if (act.type === 4 && act.state) {
+                                    actDetails.push(`💬 Custom: ${act.state}`);
+                                }
                             });
                         }
                         activityElem.innerHTML = actDetails.length > 0 ? actDetails.join('<br>') : "";
                     }
-                }).catch(() => {});
+                })
+                .catch(() => {});
         }
         fetchDiscordStatus();
-        setInterval(fetchDiscordStatus, 10000);
+        setInterval(fetchDiscordStatus, 12000);
 
-        let visits = localStorage.getItem("visits_count") || 1;
-        visits = parseInt(visits) + 1;
-        localStorage.setItem("visits_count", visits);
-        document.getElementById("visit-count").innerText = visits;
-
-        /* Animacja cząsteczek tła */
+        /* =========================================================
+           11. ANIMACJA CZĄSTECZEK W TLE
+           ========================================================= */
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
         let particles = [];
-        for(let i=0; i<45; i++) {
+        for (let i = 0; i < 48; i++) {
             particles.push({
-                x: Math.random()*canvas.width, y: Math.random()*canvas.height,
-                vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, size: Math.random()*2+1
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                size: Math.random() * 2 + 1
             });
         }
+
         function animateParticles() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(0, 212, 255, 0.38)';
             particles.forEach(p => {
-                p.x += p.vx; p.y += p.vy;
-                if(p.x<0||p.x>canvas.width) p.vx*=-1;
-                if(p.y<0||p.y>canvas.height) p.vy*=-1;
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
             });
             requestAnimationFrame(animateParticles);
         }
