@@ -220,12 +220,6 @@
             border-color: rgba(0, 212, 255, 0.45);
         }
 
-        .btn-toggle.active-filter {
-            background: rgba(0, 212, 255, 0.28);
-            border-color: #00d4ff;
-            color: #ffffff;
-        }
-
         /* =========================================================
            NAGŁÓWEK PROFILU I POLUBIENIA
            ========================================================= */
@@ -592,34 +586,12 @@
             transform: translateY(-2px);
         }
 
-        .btn-json {
-            background: rgba(255, 255, 255, 0.08);
-            color: #d8c7ff;
-            border: 1px solid rgba(0, 212, 255, 0.35);
-            margin-top: 0;
-            width: auto;
-            padding: 8px 14px;
-            font-size: 12px;
-        }
-
-        .btn-json:hover {
-            background: rgba(0, 212, 255, 0.2);
-            color: #ffffff;
-        }
-
         /* =========================================================
-           GALERIA ZDJĘĆ (GARAŻOWA + GRY)
+           GALERIE (ODDZIELONE)
            ========================================================= */
-        .gallery-filter {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-        }
-
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 16px;
         }
 
@@ -685,23 +657,8 @@
         }
 
         /* =========================================================
-           KSIĘGA GOŚCI & EXPORT JSON
+           KSIĘGA GOŚCI
            ========================================================= */
-        .guestbook-toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .json-controls {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
         .guestbook-form {
             display: flex;
             flex-direction: column;
@@ -840,7 +797,8 @@
                 <a href="#social" data-lang-pl="Social Media" data-lang-en="Social Media">Social Media</a>
                 <a href="#gry" data-lang-pl="Gry & Mody" data-lang-en="Games & Mods">Gry & Mody</a>
                 <a href="#administracja" data-lang-pl="Serwery" data-lang-en="Servers">Serwery</a>
-                <a href="#galeria" data-lang-pl="Galeria" data-lang-en="Gallery">Galeria</a>
+                <a href="#galeria-garaz" data-lang-pl="Galeria Garażowa" data-lang-en="Garage Gallery">Galeria Garażowa</a>
+                <a href="#galeria-gry" data-lang-pl="Galeria z Gier" data-lang-en="Game Gallery">Galeria z Gier</a>
                 <a href="#sprzet" data-lang-pl="Sprzęt" data-lang-en="Hardware">Sprzęt</a>
                 <a href="#kontakt" data-lang-pl="Kontakt" data-lang-en="Contact">Kontakt</a>
                 <a href="#ksiega" data-lang-pl="Księga Gości" data-lang-en="Guestbook">Księga Gości</a>
@@ -891,7 +849,7 @@
             </p>
         </section>
 
-        <!-- Staż (Naprawione daty bez tagów cytowań) -->
+        <!-- Staż -->
         <section id="staz">
             <h2 data-lang-pl="⏱️ Mój Staż i Doświadczenie" data-lang-en="⏱️ Experience">⏱️ Mój Staż i Doświadczenie</h2>
             <div class="grid-box">
@@ -1036,7 +994,7 @@
             </div>
         </section>
 
-        <!-- Serwery (MIGMC.aternos.me + Status online/offline i liczba graczy na żywo) -->
+        <!-- Serwery (MIGMC.aternos.me ze sprawdzaniem offline/online) -->
         <section id="administracja">
             <h2>🛡️ Administracja & Serwery</h2>
             <div class="grid-box">
@@ -1092,44 +1050,41 @@
             </div>
         </section>
 
-        <!-- Galeria Garażowa + Galeria Gier -->
-        <section id="galeria">
-            <h2>🖼️ Galeria Garażowa & Zrzuty z Gier</h2>
-            
+        <!-- ODDZIELNA SEKCJA: Galeria Garażowa -->
+        <section id="galeria-garaz">
+            <h2>🔧 Galeria Garażowa & Naprawione Auta</h2>
             <div class="grid-box" style="margin-bottom: 20px;">
                 <div class="expand-card static-card">
                     <h3>🔧 Statystyka Warsztatu</h3>
                     <div class="short-desc" style="margin-top:5px;">Liczba zrealizowanych projektów mechanicznych</div>
-                    <p style="font-size:24px; font-weight:800; color:#00ff88; margin-top:8px;">73 naprawione auta</p>
+                    <p style="font-size:24px; font-weight:800; color:#00ff88; margin-top:8px;"><span id="cars-repaired-count">73</span> naprawione auta</p>
                 </div>
             </div>
-
-            <div class="gallery-filter">
-                <button class="btn-toggle active-filter" id="filter-all" onclick="filterGallery('all', this)">Wszystkie (3)</button>
-                <button class="btn-toggle" id="filter-garaz" onclick="filterGallery('garaz', this)">🔧 Galeria Garażowa (2)</button>
-                <button class="btn-toggle" id="filter-gry" onclick="filterGallery('gry', this)">🎮 Gry (1)</button>
-            </div>
-
             <div class="gallery-grid">
-                <div class="gallery-item cat-garaz" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów.jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 1)')">
+                <div class="gallery-item" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów.jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 1)')">
                     <img src="galeria garażowa/opel zafira b wymiana pokrywy zaworów.jpg" alt="Opel Zafira B wymiana pokrywy zaworów">
                     <div class="gallery-caption">🔧 Opel Zafira B — Wymiana pokrywy zaworów (1)</div>
                 </div>
-
-                <div class="gallery-item cat-garaz" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów (2).jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 2)')">
+                <div class="gallery-item" onclick="openLightbox('galeria garażowa/opel zafira b wymiana pokrywy zaworów (2).jpg', 'Opel Zafira B — Wymiana pokrywy zaworów (cz. 2)')">
                     <img src="galeria garażowa/opel zafira b wymiana pokrywy zaworów (2).jpg" alt="Opel Zafira B wymiana pokrywy zaworów 2">
                     <div class="gallery-caption">🔧 Opel Zafira B — Wymiana pokrywy zaworów (2)</div>
                 </div>
+            </div>
+        </section>
 
-                <div class="gallery-item cat-gry" onclick="openLightbox('galeria/beamng.png', 'BeamNG.drive — Symulator fizyki')">
+        <!-- ODDZIELNA SEKCJA: Galeria z Gier -->
+        <section id="galeria-gry">
+            <h2>🎮 Galeria z Gier</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openLightbox('galeria/beamng.png', 'BeamNG.drive — Symulator fizyki')">
                     <img src="galeria/beamng.png" alt="BeamNG Screenshot">
                     <div class="gallery-caption">🎮 BeamNG.drive — Zrzut z gry</div>
                 </div>
             </div>
-            <p style="font-size:12px; color:#8578aa; margin-top:10px;">Kliknij w dowolne zdjęcie, aby otworzyć powiększenie na cały ekran.</p>
+            <p style="font-size:12px; color:#8578aa; margin-top:10px;">Kliknij w zdjęcie, aby powiększyć na cały ekran.</p>
         </section>
 
-        <!-- Sprzęt (Zmieniony tytuł na samo 💻 Sprzęt + Pełna Specyfikacja w kartach) -->
+        <!-- Sprzęt (Nienaruszona specyfikacja) -->
         <section id="sprzet">
             <h2>💻 Sprzęt</h2>
             <div class="grid-box">
@@ -1250,23 +1205,15 @@
             </div>
         </section>
 
-        <!-- Księga Gości NA SAMYM KOŃCU + Zapis do pliku .json -->
+        <!-- Księga Gości NA SAMYM KOŃCU -->
         <section id="ksiega" style="margin-bottom: 10px;">
-            <h2>📖 Księga Gości & Zapis Danych (.json)</h2>
-            <div class="guestbook-toolbar">
-                <p style="font-size:13px; color:#b5a9d6;">Zostaw swój ślad na stronie! Wpisy i statystyki można wyeksportować lub wczytać z pliku <code>dane_strony.json</code>.</p>
-                <div class="json-controls">
-                    <button class="btn-action btn-json" onclick="exportDataToJSON()">💾 Pobierz dane_strony.json</button>
-                    <button class="btn-action btn-json" onclick="document.getElementById('json-file-input').click()">📂 Wczytaj .json</button>
-                    <input type="file" id="json-file-input" accept=".json" style="display:none;" onchange="importDataFromJSON(event)">
-                </div>
-            </div>
-            
+            <h2>📖 Księga Gości</h2>
+            <p style="font-size:13px; color:#b5a9d6; margin-bottom:12px;">Zostaw swój ślad na stronie! Wpisy i dane są automatycznie zapisywane w pliku <code>dane.json</code>.</p>
             <div class="expand-card static-card">
                 <div class="guestbook-form">
                     <input type="text" id="gb-name" class="guestbook-input" placeholder="Twój nick / Discord (np. Janek#1234)">
                     <textarea id="gb-msg" class="guestbook-input" placeholder="Twoja wiadomość w księdze gości..." rows="2" style="resize:none;"></textarea>
-                    <button class="btn-action btn-discord" onclick="addGuestbookEntry()">✍️ Dodaj wpis i zapisz</button>
+                    <button class="btn-action btn-discord" onclick="addGuestbookEntry()">✍️ Dodaj wpis do księgi</button>
                 </div>
                 <div class="guestbook-entries" id="guestbook-list"></div>
             </div>
@@ -1289,18 +1236,47 @@
 
     <script>
         /* =========================================================
-           1. SPLASH SCREEN / LOADER
+           1. ŁADOWANIE I ZAPIS DANYCH (dane.json + save.php)
            ========================================================= */
+        let siteData = {
+            visits: 1,
+            likes: 48,
+            userLiked: false,
+            guestbook: []
+        };
+
         window.addEventListener('load', () => {
             const splash = document.getElementById('splash-screen');
             splash.style.opacity = '0';
             setTimeout(() => {
                 splash.style.display = 'none';
             }, 600);
-            initStorageAndState();
+
+            // Odczyt z pliku dane.json na serwerze
+            fetch('dane.json')
+                .then(res => res.json())
+                .then(data => {
+                    siteData = data;
+                    initStorageAndState();
+                })
+                .catch(() => {
+                    initStorageAndState();
+                });
+
             fetchMinecraftStatus();
             setInterval(fetchMinecraftStatus, 30000);
+            calculateRepairedCars();
         });
+
+        function saveToServer() {
+            fetch('save.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: JSON.stringify(siteData)
+            }).catch(() => {});
+        }
 
         /* =========================================================
            2. PRZYJEMNIEJSZY DŹWIĘK KLIKANIA (MIĘKKI TON WEB AUDIO)
@@ -1322,13 +1298,12 @@
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
 
-                // Ciepły, miękki ton przypominający delikatne kliknięcie interfejsu
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(420, now);
                 osc.frequency.exponentialRampToValueAtTime(220, now + 0.045);
 
                 gain.gain.setValueAtTime(0.001, now);
-                gain.gain.linearRampToValueAtTime(0.06, now + 0.008);
+                gain.gain.linearRampToValueAtTime(0.05, now + 0.008);
                 gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
 
                 osc.connect(gain);
@@ -1348,7 +1323,7 @@
         }
 
         /* =========================================================
-           3. ROZWIJANIE KART (SPECIFIKACJE, GRY, SERWERY)
+           3. ROZWIJANIE KART
            ========================================================= */
         function toggleCard(card) {
             playSoftClick();
@@ -1367,27 +1342,8 @@
         }
 
         /* =========================================================
-           4. FILTROWANIE GALERII & LIGHTBOX
+           4. LIGHTBOX DO ZDJĘĆ
            ========================================================= */
-        function filterGallery(category, btnElement) {
-            playSoftClick();
-            document.querySelectorAll('.gallery-filter .btn-toggle').forEach(btn => {
-                btn.classList.remove('active-filter');
-            });
-            if (btnElement) btnElement.classList.add('active-filter');
-
-            const items = document.querySelectorAll('.gallery-item');
-            items.forEach(item => {
-                if (category === 'all') {
-                    item.style.display = 'block';
-                } else if (item.classList.contains('cat-' + category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
         function openLightbox(src, caption) {
             playSoftClick();
             document.getElementById("lightbox-img").src = src;
@@ -1411,7 +1367,7 @@
             fetch('https://api.mcsrvstat.us/2/MIGMC.aternos.me')
                 .then(res => res.json())
                 .then(data => {
-                    if (data && data.online) {
+                    if (data && data.online === true) {
                         stateEl.innerHTML = '<span class="mc-pill-online">🟢 Włączony (Online)</span>';
                         const onlineCount = data.players ? data.players.online : 0;
                         const maxCount = data.players ? data.players.max : 20;
@@ -1422,45 +1378,70 @@
                     }
                 })
                 .catch(() => {
-                    stateEl.innerHTML = '<span class="mc-pill-offline">⚪ Status niedostępny</span>';
-                    playersEl.innerText = 'Gracze: -- / --';
+                    stateEl.innerHTML = '<span class="mc-pill-offline">🔴 Wyłączony (Offline)</span>';
+                    playersEl.innerText = 'Gracze: 0 / 0';
                 });
         }
 
         /* =========================================================
-           6. SYSTEM POLUBIEŃ (TYLKO RAZ NA UŻYTKOWNIKA)
+           6. AUTOMATYCZNY WZROST NAPRAWIONYCH AUT
+           ========================================================= */
+        function isPolishHoliday(date) {
+            const m = date.getMonth() + 1;
+            const d = date.getDate();
+            const fixedHolidays = ["1-1", "6-1", "1-5", "3-5", "15-8", "1-11", "11-11", "25-12", "26-12"];
+            return fixedHolidays.includes(`${d}-${m}`);
+        }
+
+        function calculateRepairedCars() {
+            const startDate = new Date(2026, 10, 1); 
+            const today = new Date();
+            let businessDaysCount = 0;
+            let curr = new Date(startDate);
+
+            while (curr <= today) {
+                const dayOfWeek = curr.getDay();
+                if (dayOfWeek !== 0 && !isPolishHoliday(curr)) {
+                    businessDaysCount++;
+                }
+                curr.setDate(curr.getDate() + 1);
+            }
+
+            const totalRepaired = 73 + Math.max(0, businessDaysCount - 1);
+            const counterEl = document.getElementById('cars-repaired-count');
+            if (counterEl) {
+                counterEl.innerText = totalRepaired;
+            }
+        }
+
+        /* =========================================================
+           7. SYSTEM POLUBIEŃ
            ========================================================= */
         function likePage() {
             playSoftClick();
-            const alreadyLiked = localStorage.getItem('arrel_page_liked') === 'true';
-            if (alreadyLiked) {
+            if (siteData.userLiked) {
                 showToast('Już polubiłeś tę stronę! ❤️');
                 return;
             }
 
-            let currentLikes = parseInt(localStorage.getItem('arrel_like_count') || '48', 10);
-            currentLikes += 1;
-
-            localStorage.setItem('arrel_like_count', currentLikes.toString());
-            localStorage.setItem('arrel_page_liked', 'true');
+            siteData.likes += 1;
+            siteData.userLiked = true;
 
             updateLikeUI();
+            saveToServer();
             showToast('Dziękuję za polubienie strony! ❤️');
         }
 
         function updateLikeUI() {
-            const currentLikes = parseInt(localStorage.getItem('arrel_like_count') || '48', 10);
-            const alreadyLiked = localStorage.getItem('arrel_page_liked') === 'true';
-
             const btn = document.getElementById('like-page-btn');
             const countSpan = document.getElementById('like-count');
             const footerCountSpan = document.getElementById('footer-like-count');
             const labelSpan = document.getElementById('like-label');
 
-            if (countSpan) countSpan.innerText = currentLikes;
-            if (footerCountSpan) footerCountSpan.innerText = currentLikes;
+            if (countSpan) countSpan.innerText = siteData.likes;
+            if (footerCountSpan) footerCountSpan.innerText = siteData.likes;
 
-            if (alreadyLiked && btn) {
+            if (siteData.userLiked && btn) {
                 btn.classList.add('liked');
                 btn.disabled = true;
                 if (labelSpan) labelSpan.innerText = 'Polubiono';
@@ -1468,42 +1449,15 @@
         }
 
         /* =========================================================
-           7. PAMIĘĆ DANYCH, KSIĘGA GOŚCI & PLIK .JSON
+           8. KSIĘGA GOŚCI
            ========================================================= */
-        const STORAGE_KEY = 'arrelYT557_site_data_v1';
-
-        function getSiteDataObject() {
-            let entries = [];
-            try {
-                entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
-            } catch (e) {
-                entries = [];
-            }
-
-            return {
-                owner: 'arrelYT557',
-                lastUpdated: new Date().toISOString(),
-                visits: parseInt(localStorage.getItem('visits_count') || '1', 10),
-                likes: parseInt(localStorage.getItem('arrel_like_count') || '48', 10),
-                userLiked: localStorage.getItem('arrel_page_liked') === 'true',
-                guestbook: entries
-            };
-        }
-
-        function syncBackupToStorage() {
-            const dataObj = getSiteDataObject();
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObj));
-        }
-
         function initStorageAndState() {
-            // Licznik odwiedzin
-            let visits = parseInt(localStorage.getItem('visits_count') || '0', 10) + 1;
-            localStorage.setItem('visits_count', visits.toString());
-            document.getElementById('visit-count').innerText = visits;
+            siteData.visits += 1;
+            document.getElementById('visit-count').innerText = siteData.visits;
+            saveToServer();
 
             updateLikeUI();
             loadGuestbook();
-            syncBackupToStorage();
         }
 
         function addGuestbookEntry() {
@@ -1518,36 +1472,32 @@
                 return;
             }
 
-            let entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
             const now = new Date();
             const dateFormatted = now.toLocaleDateString('pl-PL') + ' ' + now.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
 
-            entries.unshift({
+            siteData.guestbook.unshift({
                 name: name,
                 msg: msg,
                 date: dateFormatted
             });
 
-            localStorage.setItem('guestbook_entries', JSON.stringify(entries));
-            syncBackupToStorage();
-
             nameInput.value = '';
             msgInput.value = '';
             loadGuestbook();
-            showToast('Dodano wpis i zapisano dane! ✍️');
+            saveToServer();
+            showToast('Dodano wpis do księgi gości! ✍️');
         }
 
         function loadGuestbook() {
             const list = document.getElementById('guestbook-list');
             if (!list) return;
 
-            let entries = JSON.parse(localStorage.getItem('guestbook_entries') || '[]');
-            if (entries.length === 0) {
+            if (!siteData.guestbook || siteData.guestbook.length === 0) {
                 list.innerHTML = '<div class="guestbook-msg">Brak wpisów w księdze gości. Bądź pierwszy i zostaw ślad!</div>';
                 return;
             }
 
-            list.innerHTML = entries.map(e => `
+            list.innerHTML = siteData.guestbook.map(e => `
                 <div class="guestbook-msg">
                     <div class="guestbook-msg-meta"><strong>${escapeHTML(e.name)}</strong> • ${escapeHTML(e.date)}</div>
                     <div>${escapeHTML(e.msg)}</div>
@@ -1563,60 +1513,8 @@
                 .replace(/"/g, '&quot;');
         }
 
-        function exportDataToJSON() {
-            playSoftClick();
-            const dataObj = getSiteDataObject();
-            const jsonString = JSON.stringify(dataObj, null, 2);
-            const blob = new Blob([jsonString], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'dane_strony.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-
-            showToast('Zapisano plik dane_strony.json 💾');
-        }
-
-        function importDataFromJSON(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                try {
-                    const parsed = JSON.parse(e.target.result);
-                    if (parsed.guestbook && Array.isArray(parsed.guestbook)) {
-                        localStorage.setItem('guestbook_entries', JSON.stringify(parsed.guestbook));
-                    }
-                    if (typeof parsed.likes === 'number') {
-                        localStorage.setItem('arrel_like_count', parsed.likes.toString());
-                    }
-                    if (typeof parsed.userLiked === 'boolean') {
-                        localStorage.setItem('arrel_page_liked', parsed.userLiked ? 'true' : 'false');
-                    }
-                    if (typeof parsed.visits === 'number') {
-                        localStorage.setItem('visits_count', parsed.visits.toString());
-                        document.getElementById('visit-count').innerText = parsed.visits;
-                    }
-
-                    updateLikeUI();
-                    loadGuestbook();
-                    syncBackupToStorage();
-                    showToast('Wczytano dane z pliku .json! 📂');
-                } catch (err) {
-                    showToast('Błąd: nieprawidłowy format pliku .json!');
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
-        }
-
         /* =========================================================
-           8. ROZBUDOWANA LISTA CYTATÓW DNIA (20 CYTATÓW)
+           9. ROZBUDOWANA LISTA CYTATÓW DNIA (20 CYTATÓW)
            ========================================================= */
         const quotes = [
             "„Nie liczy się to, kim się urodziłeś, ale czym wyrastasz.”",
@@ -1645,7 +1543,7 @@
         document.getElementById("daily-quote").innerHTML = `💬 Cytat dnia: ${quotes[dayOfYear % quotes.length]}`;
 
         /* =========================================================
-           9. EFEKT PISANIA TYTUŁU, JĘZYK, SCHOWEK I TOAST
+           10. EFEKT PISANIA TYTUŁU, JĘZYK, SCHOWEK I TOAST
            ========================================================= */
         const titleText = "arrelYT557";
         let titleIndex = 0;
@@ -1695,7 +1593,7 @@
         }
 
         /* =========================================================
-           10. STATUS DISCORD LANYARD NA ŻYWO
+           11. STATUS DISCORD LANYARD NA ŻYWO
            ========================================================= */
         function fetchDiscordStatus() {
             fetch('https://api.lanyard.rest/v1/users/1362042994781585678')
@@ -1748,7 +1646,7 @@
         setInterval(fetchDiscordStatus, 12000);
 
         /* =========================================================
-           11. ANIMACJA CZĄSTECZEK W TLE
+           12. ANIMACJA CZĄSTECZEK W TLE
            ========================================================= */
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
